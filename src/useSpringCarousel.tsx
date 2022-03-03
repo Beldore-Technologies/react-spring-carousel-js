@@ -57,6 +57,8 @@ export default function useSpringCarousel({
   initialActiveItem = 0,
   initialStartingPosition = 'start',
   disableGestures = false,
+  wrapperClass = '',
+  gutter = 0,
 }: // gutter = 0,
 // adjacentItemsPx = 0,
 UseSpringCarouselProps) {
@@ -102,11 +104,11 @@ UseSpringCarouselProps) {
     }
 
     if (carouselSlideAxis === 'x') {
-      // return carouselItem.getBoundingClientRect().width + gutter
+      //return carouselItem.getBoundingClientRect().width + gutter
       return carouselItem.getBoundingClientRect().width
     }
 
-    // return carouselItem.getBoundingClientRect().height + gutter
+    //return carouselItem.getBoundingClientRect().height + gutter
     return carouselItem.getBoundingClientRect().height
   }, [carouselSlideAxis])
   const adjustCarouselWrapperPosition = useCallback(
@@ -646,11 +648,17 @@ UseSpringCarouselProps) {
       >
         <animated.div
           {...bindDrag()}
+          className={wrapperClass}
           data-testid="use-spring-carousel-animated-wrapper"
           style={{
-            display: 'flex',
+            display: 'grid',
             flexDirection:
               carouselSlideAxis === 'x' ? 'row' : 'column',
+            gridTemplateColumns: `repeat(${
+              internalItems.length
+            }, calc((100% - ${
+              (itemsPerSlide - 1) * gutter
+            }px) / ${itemsPerSlide}))`,
             top: 0,
             left: 0,
             position: 'relative',

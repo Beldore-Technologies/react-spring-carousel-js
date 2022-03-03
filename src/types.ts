@@ -25,6 +25,7 @@ type BaseCarouselSharedProps = {
   springConfig?: SpringConfig
   items: ReactSpringCarouselItem[]
   thumbsSlideAxis?: 'x' | 'y'
+  wrapperClass?: string
 }
 
 export type UseSpringCarouselProps = BaseCarouselSharedProps & {
@@ -35,7 +36,7 @@ export type UseSpringCarouselProps = BaseCarouselSharedProps & {
   itemsPerSlide?: number
   initialActiveItem?: number
   initialStartingPosition?: 'start' | 'center' | 'end'
-  // gutter?: number
+  gutter?: number
   // adjacentItemsPx?: number
 }
 
