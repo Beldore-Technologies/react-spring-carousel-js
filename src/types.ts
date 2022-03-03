@@ -26,6 +26,7 @@ type BaseCarouselSharedProps = {
   items: ReactSpringCarouselItem[]
   thumbsSlideAxis?: 'x' | 'y'
   wrapperClass?: string
+  itemClass?: string
 }
 
 export type UseSpringCarouselProps = BaseCarouselSharedProps & {

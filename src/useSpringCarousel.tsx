@@ -25,6 +25,7 @@ import {
 } from './types'
 import { useMount } from './utils'
 import { getIsBrowser } from './utils'
+import classNames from 'classnames'
 
 const UseSpringCarouselContext = createContext<
   UseSpringCarouselContextProps | undefined
@@ -58,6 +59,7 @@ export default function useSpringCarousel({
   initialStartingPosition = 'start',
   disableGestures = false,
   wrapperClass = '',
+  itemClass = '',
   gutter = 0,
 }: // gutter = 0,
 // adjacentItemsPx = 0,
@@ -654,11 +656,13 @@ UseSpringCarouselProps) {
             display: 'grid',
             flexDirection:
               carouselSlideAxis === 'x' ? 'row' : 'column',
-            gridTemplateColumns: `repeat(${
-              internalItems.length
-            }, calc((100% - ${
-              (itemsPerSlide - 1) * gutter
-            }px) / ${itemsPerSlide}))`,
+            gap: gutter,
+            gridTemplateColumns:
+              carouselSlideAxis === 'x'
+                ? `repeat(${internalItems.length}, calc((100% - ${
+                    (itemsPerSlide - 1) * gutter
+                  }px) / ${itemsPerSlide}))`
+                : 'auto',
             top: 0,
             left: 0,
             position: 'relative',
@@ -679,7 +683,10 @@ UseSpringCarouselProps) {
             return (
               <div
                 key={`${id}-${index}`}
-                className="use-spring-carousel-item"
+                className={classNames(
+                  'use-spring-carousel-item',
+                  itemClass,
+                )}
                 data-testid="use-spring-carousel-item-wrapper"
                 style={{
                   display: 'flex',

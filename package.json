@@ -1,6 +1,6 @@
 {
   "name": "@beldore/react-spring-carousel",
-  "version": "1.9.31",
+  "version": "0.0.2",
   "description": "A new Carousel experience for the web",
   "homepage": "https://react-spring-carousel-js.emilianobucci.com",
   "repository": {
@@ -43,6 +43,7 @@
   ],
   "dependencies": {
     "@use-gesture/react": "^10.1.1",
+    "classnames": "^2.3.1",
     "react-spring": "^9.3.0",
     "rxjs": "^6.6.7",
     "screenfull": "^5.1.0"
